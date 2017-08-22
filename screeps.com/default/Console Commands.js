@@ -21,3 +21,11 @@ Game.getObjectById(sourceID)
 console.log(sourceID); 
 
 Game.creeps.Lily.moveTo(31, 21)
+
+
+
+//move nonworking builders?
+
+if(creep.build(targets) == ERR_INVALID_TARGET) {
+    creep.moveTo(36, 45)
+}

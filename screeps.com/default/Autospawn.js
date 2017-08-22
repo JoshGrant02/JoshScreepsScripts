@@ -19,7 +19,7 @@ module.exports = {
         
         //If Harvesters < 3, Spawn more
         
-        if(harvesters.length < 3) {
+        if(harvesters.length < 4) {
 
             //Spawn Creeps with less parts if Creeps die
 
@@ -44,7 +44,7 @@ module.exports = {
             var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
             console.log('Upgraders: ' + upgraders.length);
         
-            //If Upgraders < 15, Spawn more
+            //If Upgraders < 12, Spawn more
         
             if(upgraders.length < 12) {
                 var newName = Game.spawns['JoshSpawn'].createCreep([WORK, WORK, CARRY, MOVE, MOVE], undefined, {role: 'upgrader'});
@@ -56,9 +56,9 @@ module.exports = {
             var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
                 console.log('Builders: ' + builders.length);
             
-            //If Builders < 3, Spawn more
+            //If Builders < 0, Spawn more
             
-            if(builders.length < 3) {
+            if(builders.length < 0) {
                 var newName = Game.spawns['JoshSpawn'].createCreep([WORK, WORK, CARRY, MOVE, MOVE], undefined, {role: 'builder'});
                 console.log('Spawning new builder: ' + newName);
             }
