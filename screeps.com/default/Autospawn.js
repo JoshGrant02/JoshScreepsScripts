@@ -17,7 +17,7 @@ module.exports = {
         var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
         console.log('Harvesters: ' + harvesters.length);
         
-        //If Harvesters < 3, Spawn more
+        //If Harvesters < 4, Spawn more
         
         if(harvesters.length < 4) {
 
@@ -47,7 +47,7 @@ module.exports = {
             //If Upgraders < 12, Spawn more
         
             if(upgraders.length < 12) {
-                var newName = Game.spawns['JoshSpawn'].createCreep([WORK, WORK, CARRY, MOVE, MOVE], undefined, {role: 'upgrader'});
+                var newName = Game.spawns['JoshSpawn'].createCreep([WORK, WORK, WORK, CARRY, MOVE, MOVE, MOVE], undefined, {role: 'upgrader'});
                 console.log('Spawning new upgrader: ' + newName);
             }
         

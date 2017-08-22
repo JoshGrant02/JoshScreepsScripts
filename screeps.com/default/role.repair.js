@@ -18,13 +18,15 @@ var roleRepair = {
     
             if(creep.memory.repairing) {
                 var roadToRepair = creep.room.find(FIND_STRUCTURES, {
-                    filter: function(object){
+                    filter: function(object) {
                     return object.structureType === STRUCTURE_ROAD && (object.hits < object.hitsMax);}
-                    if(roadToRepair.length) {
-                        if(creep.build(roadToRepair[0]) == ERR_NOT_IN_RANGE) {
-                            creep.moveTo(roadToRepair[0], {visualizePathStyle: {stroke: '#5463f5'}});
-                }
+                });
 
+                if(roadToRepair.length) {
+                    if(creep.build(roadToRepair[0]) == ERR_NOT_IN_RANGE) {
+                        creep.moveTo(roadToRepair[0], {visualizePathStyle: {stroke: '#5463f5'}});
+                    }
+                }
             }
 
             //Harvest

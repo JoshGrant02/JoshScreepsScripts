@@ -1,7 +1,12 @@
 {
     "compilerOptions": {
         "target": "ES6",
-        "typeRoots" : ["./typings"],
         "checkJs": true
+    },
+    "typeAcquisition": {
+        "include": [
+            "loadash",
+            "node"
+        ]
     }
- }
+}
