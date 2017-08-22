@@ -22,31 +22,33 @@ module.exports.loop = function () {
         var newName = Game.spawns['JoshSpawn'].createCreep([WORK,CARRY,MOVE], undefined, {role: 'harvester'});
         console.log('Spawning new harvester: ' + newName);
     }
+    //Prioritize Harvesters
+    else {
+
+        //Count Upgraders
+
+        var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
+        console.log('Upgraders: ' + upgraders.length);
+
+        //If Upgraders < 15, Spawn more
+
+        if(upgraders.length < 15) {
+            var newName = Game.spawns['JoshSpawn'].createCreep([WORK,CARRY,MOVE], undefined, {role: 'upgrader'});
+            console.log('Spawning new upgrader: ' + newName);
+        }
+
+        //Count Builders
+
+        var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
+        console.log('Builders: ' + builders.length);
     
-     //Count Upgraders
-
-    var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
-    console.log('Upgraders: ' + upgraders.length);
-
-    //If Upgraders < 6, Spawn more
-
-    if(upgraders.length < 6) {
-        var newName = Game.spawns['JoshSpawn'].createCreep([WORK,CARRY,MOVE], undefined, {role: 'upgrader'});
-        console.log('Spawning new upgrader: ' + newName);
+        //If Builders < 3, Spawn more
+    
+        if(builders.length < 3) {
+            var newName = Game.spawns['JoshSpawn'].createCreep([WORK,CARRY,MOVE], undefined, {role: 'builder'});
+            console.log('Spawning new builder: ' + newName);
+        }
     }
-
-     //Count Builders
-
-     var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
-     console.log('Builders: ' + builders.length);
- 
-     //If Builders < 3, Spawn more
- 
-    if(builders.length < 3) {
-         var newName = Game.spawns['JoshSpawn'].createCreep([WORK,CARRY,MOVE], undefined, {role: 'builder'});
-         console.log('Spawning new builder: ' + newName);
-     }
-
     
     if(Game.spawns['JoshSpawn'].spawning) { 
         var spawningCreep = Game.creeps[Game.spawns['JoshSpawn'].spawning.name];
