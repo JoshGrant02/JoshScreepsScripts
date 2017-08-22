@@ -56,9 +56,9 @@ module.exports = {
             var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
                 console.log('Builders: ' + builders.length);
             
-            //If Builders < 0, Spawn more
+            //If Builders < 2, Spawn more
             
-            if(builders.length < 0) {
+            if(builders.length < 2) {
                 var newName = Game.spawns['JoshSpawn'].createCreep([WORK, WORK, CARRY, MOVE, MOVE], undefined, {role: 'builder'});
                 console.log('Spawning new builder: ' + newName);
             }
