@@ -17,14 +17,14 @@ var roleRepair = {
             //Repairing
     
             if(creep.memory.repairing) {
-                var roadToRepair = creep.room.find(FIND_STRUCTURES, {
+                var wallToRepair = creep.room.find(FIND_STRUCTURES, {
                     filter: function(object) {
-                    return object.structureType === STRUCTURE_ROAD && (object.hits < 3000);}
+                    return object.structureType === STRUCTURE_WALL && (object.hits < 3000);}
                 });
 
-                if(roadToRepair.length) {
-                    if(creep.repair(roadToRepair[0]) == ERR_NOT_IN_RANGE) {
-                        creep.moveTo(roadToRepair[0], {visualizePathStyle: {stroke: '#5463f5'}});
+                if(wallToRepair.length) {
+                    if(creep.repair(wallToRepair[0]) == ERR_NOT_IN_RANGE) {
+                        creep.moveTo(wallToRepair[0], {visualizePathStyle: {stroke: '#5463f5'}});
                     }
                 }
             }

@@ -1,3 +1,8 @@
+//Spawn
+
+Game.spawns['JoshSpawn'].createCreep([WORK, WORK, WORK, CARRY, MOVE, MOVE, MOVE], undefined, {role: 'upgrader'});
+
+
 for(var key in Game.)
 
 Game.creeps[]
