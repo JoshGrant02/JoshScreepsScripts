@@ -19,11 +19,11 @@ var roleRepair = {
             if(creep.memory.repairing) {
                 var roadToRepair = creep.room.find(FIND_STRUCTURES, {
                     filter: function(object) {
-                    return object.structureType === STRUCTURE_ROAD && (object.hits < object.hitsMax);}
+                    return object.structureType === STRUCTURE_ROAD && (object.hits < 3000);}
                 });
 
                 if(roadToRepair.length) {
-                    if(creep.build(roadToRepair[0]) == ERR_NOT_IN_RANGE) {
+                    if(creep.repair(roadToRepair[0]) == ERR_NOT_IN_RANGE) {
                         creep.moveTo(roadToRepair[0], {visualizePathStyle: {stroke: '#5463f5'}});
                     }
                 }
@@ -32,9 +32,9 @@ var roleRepair = {
             //Harvest
 
             else {
-                var sources = Game.getObjectById('5982fc5fb097071b4adbd47a');
+                var sources = Game.getObjectById('5982fc5fb097071b4adbd47c')
                 if(creep.harvest(sources) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(sources, {visualizePathStyle: {stroke: '#ffaa00'}});
+                    creep.moveTo(sources), {visualizePathStyle: {stroke: '#00ffff'}};
                 }
             }
         }

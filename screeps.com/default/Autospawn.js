@@ -15,11 +15,10 @@ module.exports = {
         //Count Harvesters
         
         var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
-        console.log('Harvesters: ' + harvesters.length);
         
-        //If Harvesters < 4, Spawn more
+        //If Harvesters < 3, Spawn more
         
-        if(harvesters.length < 4) {
+        if(harvesters.length < 3) {
 
             //Spawn Creeps with less parts if Creeps die
 
@@ -30,7 +29,7 @@ module.exports = {
             //Spawn Creeps with more parts if I have more creeps
 
             else {
-                var newName = Game.spawns['JoshSpawn'].createCreep([WORK, WORK, CARRY, MOVE, MOVE], undefined, {role: 'harvester'});
+                var newName = Game.spawns['JoshSpawn'].createCreep([WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE], undefined, {role: 'harvester'});
                 console.log('Spawning new harvester: ' + newName);
             }        
         }
@@ -38,30 +37,43 @@ module.exports = {
         //Prioritize Harvesters
         
         else {
+            
+            //Count Repairers
         
-            //Count Upgraders
+            var repairers = _.filter(Game.creeps, (creep) => creep.memory.role == 'repair');
+            
+            //If Repairers < 0, Spawn more
         
-            var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
-            console.log('Upgraders: ' + upgraders.length);
-        
-            //If Upgraders < 12, Spawn more
-        
-            if(upgraders.length < 12) {
-                var newName = Game.spawns['JoshSpawn'].createCreep([WORK, WORK, WORK, CARRY, MOVE, MOVE, MOVE], undefined, {role: 'upgrader'});
-                console.log('Spawning new upgrader: ' + newName);
+            if(repairers.length < 0) {
+                var newName = Game.spawns['JoshSpawn'].createCreep([WORK, WORK, WORK, CARRY, MOVE, MOVE, MOVE], undefined, {role: 'repair'});
+                console.log('Spawning new repairer: ' + newName);
             }
-        
-            //Count Builders
-        
-            var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
-                console.log('Builders: ' + builders.length);
+
+            //Prioritize Repairers
+
+            else {
+                //Count Upgraders
             
-            //If Builders < 2, Spawn more
+                var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
             
-            if(builders.length < 2) {
-                var newName = Game.spawns['JoshSpawn'].createCreep([WORK, WORK, CARRY, MOVE, MOVE], undefined, {role: 'builder'});
-                console.log('Spawning new builder: ' + newName);
+                //If Upgraders < 12, Spawn more
+            
+                if(upgraders.length < 12) {
+                    var newName = Game.spawns['JoshSpawn'].createCreep([WORK, WORK, CARRY, MOVE, MOVE], undefined, {role: 'upgrader'});
+                    console.log('Spawning new upgrader: ' + newName);
+                }
+            
+                //Count Builders
+            
+                var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
+                
+                //If Builders < 1, Spawn more
+                
+                if(builders.length < 1) {
+                    var newName = Game.spawns['JoshSpawn'].createCreep([WORK, WORK, CARRY, MOVE, MOVE], undefined, {role: 'builder'});
+                    console.log('Spawning new builder: ' + newName);
+                }
             }
         }
     }
-};
+}
