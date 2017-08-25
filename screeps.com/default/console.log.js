@@ -8,9 +8,9 @@ module.exports = {
 
             //GCL and RCL
 
-            console.log('GCL: ' + Game.gcl.level + ', ' + Game.gcl.progress + ' of ' + Game.gcl.progressTotal);
+            console.log('Game Controller Lvl: ' + Game.gcl.level + ', ' + Math.round(Game.gcl.progress/1000) + 'k of ' + Math.round(Game.gcl.progressTotal/1000000) + 'M');
             for (var r in Game.rooms) {
-                console.log(r + ': ' + Game.rooms[r].controller.level + ', ' + Game.rooms[r].controller.progress + ' of ' + Game.rooms[r].controller.progressTotal);
+                console.log('Room ' + r + ' Lvl: ' + Game.rooms[r].controller.level + ', ' + Math.round(Game.rooms[r].controller.progress/1000) + 'k of ' + Math.round(Game.rooms[r].controller.progressTotal/1000) + 'k');
 
                 //Creeps
 
